@@ -568,15 +568,15 @@ const MicroFondosRxR = () => {
         {activeTab === 'dashboard' && renderDashboard()}
       </main>
 
-      <footer className="py-8 mt-16" style={{ backgroundColor: BRANDING.colores.texto, color: BRANDING.colores.blanco }}>
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-lg">© 2026 MicroFondos RxR - Fundación Amor y Servicio AC</p>
-          <p className="mt-2" style={{ color: BRANDING.colores.fondo }}>{TEXTOS.footer}</p>
-        </div>
-      </footer>
-    </div>
+           <>
+        <footer className="py-8 mt-16" style={{ backgroundColor: BRANDING.colores.texto, color: BRANDING.colores.blanco }}>
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <p className="text-lg">© 2026 MicroFondos RxR - Fundación Amor y Servicio AC</p>
+            <p className="mt-2" style={{ color: BRANDING.colores.fondo }}>{TEXTOS.footer}</p>
+          </div>
+        </footer>
+      </>
   );
 };
-
 
 export default MicroFondosRxR;
