@@ -582,5 +582,6 @@ const MicroFondosRxR = () => {
       </>
     </div>
   );
+  );
   }
 export default MicroFondosRxR;
