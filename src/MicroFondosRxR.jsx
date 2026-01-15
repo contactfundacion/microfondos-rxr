@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Heart, GraduationCap, Home, AlertCircle, DollarSign, TrendingUp, Award, LogIn, LogOut, Target, BarChart3, Share2, TreePine, Calendar, Trophy, Lightbulb, Eye, EyeOff, Copy, Check } from 'lucide-react';
-import * as emailjs from '@emailjs/browser';   // sin conflictos
+import * as emailjs from '@emailjs/browser';
 import { TEXTOS } from './textos';
 import { BRANDING } from './branding';
 
@@ -62,7 +62,7 @@ const MicroFondosRxR = () => {
           weeklyDonation: CONFIG.DONATION_AMOUNT,
           plan2kActive: false,
           downline: [],
-          passwordHash: bcrypt.hashSync('fasac2026', 10),
+          passwordHash: await bcrypt.hash('fasac2026', 10),
           registeredAt: new Date().toISOString(),
           donations: [],
           plan2kDonations: []
@@ -71,23 +71,7 @@ const MicroFondosRxR = () => {
         setFundraisers(initialData);
       }
     } catch (error) {
-      const initialData = [{
-        code: 'FASAC437',
-        name: 'Fundación Amor y Servicio AC',
-        email: 'contacto@fasac.org',
-        level: 0,
-        referredBy: null,
-        active: true,
-        weeklyDonation: CONFIG.DONATION_AMOUNT,
-        plan2kActive: false,
-        downline: [],
-        passwordHash: bcrypt.hashSync('fasac2026', 10),
-        registeredAt: new Date().toISOString(),
-        donations: [],
-        plan2kDonations: []
-      }];
-      await window.storage.set('fundraisers-data', JSON.stringify(initialData));
-      setFundraisers(initialData);
+      console.error(error);
     }
   };
 
@@ -530,13 +514,31 @@ const MicroFondosRxR = () => {
         <h3 className="text-xl font-bold mb-4">Datos bancarios</h3>
         <p><strong>Monto:</strong> $2000</p>
         <p><strong>CLABE:</strong> {CONFIG.BANK_CLABE}</p>
-        <p><strong>Beneficiario:</strong> {CONFIG.BANK_BENEFICIARIO}</p>
+        <p><strong>Beneficiario:</strong> {CONFIG.BANK_BENEFICIARY}</p>
         <p className="text-sm text-gray-600 mt-2">En concepto: <strong>DONATIVO {currentUser?.code || 'TU_CODIGO'}</strong></p>
       </div>
     </div>
   );
 
-  // ... (resto del código igual, pero usando BRANDING.colores y TEXTOS)
+  const renderDashboard = () => (
+    <div className="space-y-8">
+      <h1 className="text-4xl font-bold">Dashboard de {currentUser.name}</h1>
+      <div className="grid md:grid-cols-3 gap-6">
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h3 className="text-xl font-bold mb-2">Donaciones</h3>
+          <p className="text-2xl font-bold text-blue-600">{currentUser.donations?.length || 0}</p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h3 className="text-xl font-bold mb-2">Plan 2K</h3>
+          <p className="text-2xl font-bold text-green-600">{currentUser.plan2kActive ? 'Activo' : 'Inactivo'}</p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h3 className="text-xl font-bold mb-2">Ganancias</h3>
+          <p className="text-2xl font-bold text-purple-600">${currentUser.plan2kEarnings || 0}</p>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: BRANDING.colores.fondo }}>
@@ -551,7 +553,7 @@ const MicroFondosRxR = () => {
               <button onClick={() => setActiveTab('inicio')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'inicio' ? 'text-white' : ''}`} style={activeTab === 'inicio' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Inicio</button>
               <button onClick={() => setActiveTab('causas')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'causas' ? 'text-white' : ''}`} style={activeTab === 'causas' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Causas</button>
               <button onClick={() => setActiveTab('recaudadores')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'recaudadores' ? 'text-white' : ''}`} style={activeTab === 'recaudadores' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Recaudadores</button>
-                           <button onClick={() => setActiveTab('fundacion')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'fundacion' ? 'text-white' : ''}`} style={activeTab === 'fundacion' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Fundación</button>
+              <button onClick={() => setActiveTab('fundacion')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'fundacion' ? 'text-white' : ''}`} style={activeTab === 'fundacion' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Fundación</button>
               <>
                 <button onClick={() => setActiveTab('plan2k')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'plan2k' ? 'text-white' : ''}`} style={activeTab === 'plan2k' ? { backgroundColor: BRANDING.colores.acento } : { color: BRANDING.colores.texto }}>Plan 2K</button>
                 {currentUser && <button onClick={() => setActiveTab('dashboard')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'dashboard' ? 'text-white' : ''}`} style={activeTab === 'dashboard' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Dashboard</button>}
@@ -570,7 +572,7 @@ const MicroFondosRxR = () => {
         {activeTab === 'dashboard' && renderDashboard()}
       </main>
 
-           <>
+      <>
         <footer className="py-8 mt-16" style={{ backgroundColor: BRANDING.colores.texto, color: BRANDING.colores.blanco }}>
           <div className="max-w-7xl mx-auto px-4 text-center">
             <p className="text-lg">© 2026 MicroFondos RxR - Fundación Amor y Servicio AC</p>
@@ -578,6 +580,7 @@ const MicroFondosRxR = () => {
           </div>
         </footer>
       </>
+    </div>
   );
 };
 
