@@ -3,7 +3,6 @@ import { Users, Heart, GraduationCap, Home, AlertCircle, DollarSign, TrendingUp,
 import * as emailjs from '@emailjs/browser';
 import { TEXTOS } from './textos';
 import { BRANDING } from './branding';
-
 // CONFIG GLOBAL
 const CONFIG = {
   DONATION_AMOUNT: 350,
