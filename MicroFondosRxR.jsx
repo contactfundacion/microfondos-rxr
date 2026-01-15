@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Heart, GraduationCap, Home, AlertCircle, DollarSign, TrendingUp, Award, LogIn, LogOut, Target, BarChart3, Share2, TreePine, Calendar, Trophy, Lightbulb, Eye, EyeOff, Copy, Check } from 'lucide-react';
-import bcrypt from 'bcryptjs';
+import emailjs from '@emailjs/browser';
 import emailjs from 'emailjs-com';
 import { TEXTOS } from './textos';
 import { BRANDING } from './branding'; // ← NUEVO
@@ -578,5 +578,6 @@ const MicroFondosRxR = () => {
     </div>
   );
 };
+
 
 export default MicroFondosRxR;
