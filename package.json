@@ -7,7 +7,7 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "bcryptjs": "^2.4.3",
-    "@emailjs/browser": "^4.4.3",
+    "@emailjs/browser": "^4.3.3",
     "lucide-react": "^0.263.1"
   },
   "scripts": {
@@ -29,4 +29,5 @@
     ]
   }
 }
+
 
