@@ -8,5 +8,6 @@ export const BRANDING = {
     fondo: "#F4F5F7",      // gris muy claro
     texto: "#172B4D",      // casi negro
     blanco: "#FFFFFF"
-  }
+ },
+  tipografia: "'Mulish', sans-serif"   
 };
