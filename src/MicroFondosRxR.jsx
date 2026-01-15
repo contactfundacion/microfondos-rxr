@@ -553,12 +553,11 @@ const MicroFondosRxR = () => {
               <button onClick={() => setActiveTab('inicio')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'inicio' ? 'text-white' : ''}`} style={activeTab === 'inicio' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Inicio</button>
               <button onClick={() => setActiveTab('causas')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'causas' ? 'text-white' : ''}`} style={activeTab === 'causas' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Causas</button>
               <button onClick={() => setActiveTab('recaudadores')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'recaudadores' ? 'text-white' : ''}`} style={activeTab === 'recaudadores' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Recaudadores</button>
-              <button onClick={() => setActiveTab('fundacion')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'fundacion' ? 'text-white' : ''}`} style={activeTab === 'fundacion' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Fundación</button>
+                         <button onClick={() => setActiveTab('fundacion')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'fundacion' ? 'text-white' : ''}`} style={activeTab === 'fundacion' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Fundación</button>
               <>
                 <button onClick={() => setActiveTab('plan2k')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'plan2k' ? 'text-white' : ''}`} style={activeTab === 'plan2k' ? { backgroundColor: BRANDING.colores.acento } : { color: BRANDING.colores.texto }}>Plan 2K</button>
                 {currentUser && <button onClick={() => setActiveTab('dashboard')} className={`px-4 py-2 rounded-lg font-semibold ${activeTab === 'dashboard' ? 'text-white' : ''}`} style={activeTab === 'dashboard' ? { backgroundColor: BRANDING.colores.primario } : { color: BRANDING.colores.texto }}>Dashboard</button>}
               </>
-            </div>
           </div>
         </div>
       </nav>
