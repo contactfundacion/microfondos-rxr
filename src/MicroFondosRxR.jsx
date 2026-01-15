@@ -540,7 +540,7 @@ const MicroFondosRxR = () => {
     </div>
   );
 
-  return (
+   return (
     <div className="min-h-screen" style={{ backgroundColor: BRANDING.colores.fondo }}>
       <nav className="shadow-lg" style={{ backgroundColor: BRANDING.colores.blanco }}>
         <div className="max-w-7xl mx-auto px-4">
@@ -582,6 +582,4 @@ const MicroFondosRxR = () => {
       </>
     </div>
   );
-};
-
 export default MicroFondosRxR;
