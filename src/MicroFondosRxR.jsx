@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Heart, GraduationCap, Home, AlertCircle, DollarSign, TrendingUp, Award, LogIn, LogOut, Target, BarChart3, Share2, TreePine, Calendar, Trophy, Lightbulb, Eye, EyeOff, Copy, Check } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import * as emailjs from '@emailjs/browser';   // sin conflictos
 import { TEXTOS } from './textos';
-import { BRANDING } from './branding'; // ← NUEVO
+import { BRANDING } from './branding';
 
-// CONFIGURACIÓN GLOBAL
+// CONFIG GLOBAL
 const CONFIG = {
   DONATION_AMOUNT: 350,
   PLAN_2K_AMOUNT: 2000,
